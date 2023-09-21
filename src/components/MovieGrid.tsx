@@ -1,8 +1,9 @@
 import React, { useEffect } from "react";
 import { options } from "../services/api-config";
-import { Text } from "@chakra-ui/react";
+import { SimpleGrid, Text } from "@chakra-ui/react";
 import axios from "axios";
 import useMovies from "../hooks/useMovies";
+import MovieCard from "./MovieCard";
 
 const MovieGrid = () => {
   const { movies, error } = useMovies();
@@ -10,11 +11,15 @@ const MovieGrid = () => {
   return (
     <>
       {error && <Text>{error}</Text>}
-      <ul>
+      <SimpleGrid
+        columns={{ sm: 1, md: 2, lg: 4, xl: 6 }}
+        padding="10px"
+        spacing={5}
+      >
         {movies.map((movie) => (
-          <li key={movie.id}>{movie.original_title}</li>
+          <MovieCard key={movie.id} movie={movie} />
         ))}
-      </ul>
+      </SimpleGrid>
     </>
   );
 };

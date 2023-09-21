@@ -3,9 +3,10 @@ import { useEffect } from "react";
 import { options } from "../services/api-config";
 import React from "react";
 
-interface Movie {
+export interface Movie {
     id: number;
-    original_title: string;
+    title: string;
+    poster_path: string;
   }
   
   interface FetchMoviesResponse {
