@@ -9,7 +9,7 @@ interface Prop {
 const MovieCard = ({ movie }: Prop) => {
   return (
     <>
-      <Card borderRadius={5} overflow="hidden">
+      <Card maxH="md" borderRadius={5} overflow="hidden">
         <Image src={"https://image.tmdb.org/t/p/w185" + movie.poster_path} />
         <CardBody>
           <Heading fontSize="1xl">{movie.title}</Heading>
