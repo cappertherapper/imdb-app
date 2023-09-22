@@ -2,19 +2,17 @@ import axios, { CancelTokenSource } from "axios";
 import { useEffect, useState } from "react";
 import { options } from "../services/api-config";
 
-export interface Movie {
+interface Genre {
     id: number;
-    title: string;
-    poster_path: string;
-    vote_average: number;
-  }
-  
-  interface FetchMoviesResponse {
-    results: Movie[];
-  }
+    name: string;
+}
 
-const useMovies = () => {
-    const [movies, setMovies] = useState<Movie[]>([]);
+interface FetchGenresResponse {
+    genres: Genre[];
+}
+
+const useGenres = () => {
+    const [genres, setGenres] = useState<Genre[]>([]);
     const [error, setError] = useState("");
     const [isLoading, setLoading] = useState(false);
   
@@ -23,12 +21,12 @@ const useMovies = () => {
         setLoading(true);
 
         axios
-        .request<FetchMoviesResponse>({
-            ...options("/movie/top_rated?language=en-US&page=1"),
+        .request<FetchGenresResponse>({
+            ...options("/genre/movie/list?language=en"),
             cancelToken: cancelTokenSource.token,
           })
             .then(function (response) {
-            setMovies(response.data.results);
+            setGenres(response.data.genres);
             setLoading(false);
             })
             .catch((err) => {
@@ -44,6 +42,8 @@ const useMovies = () => {
               };
     }, []);
 
-    return {movies, error,isLoading};
-}
-export default useMovies;
+    return {genres, error,isLoading};
+
+};
+
+export default useGenres;
