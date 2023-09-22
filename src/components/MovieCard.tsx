@@ -10,9 +10,13 @@ interface Prop {
 const MovieCard = ({ movie }: Prop) => {
   return (
     <>
-      <Card maxH="md" borderRadius={5} overflow="hidden">
-        <Image src={"https://image.tmdb.org/t/p/w185" + movie.poster_path} />
-        <CardBody>
+      <Card>
+        <Image
+          height="278px"
+          src={"https://image.tmdb.org/t/p/w185" + movie.poster_path}
+          objectFit="fill"
+        />
+        <CardBody flex="1">
           <Heading fontSize="1xl">{movie.title}</Heading>
           <Rating rating={movie.vote_average} />
         </CardBody>

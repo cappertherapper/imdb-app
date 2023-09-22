@@ -4,20 +4,31 @@ import { SimpleGrid, Text } from "@chakra-ui/react";
 import axios from "axios";
 import useMovies from "../hooks/useMovies";
 import MovieCard from "./MovieCard";
+import MovieCardSkeleton from "./MovieCardSkeleton";
+import MovieCardContainer from "./MovieCardContainer";
 
 const MovieGrid = () => {
-  const { movies, error } = useMovies();
+  const { movies, error, isLoading } = useMovies();
+  const skeletons = [1, 2, 3, 4, 5, 6];
 
   return (
     <>
       {error && <Text>{error}</Text>}
       <SimpleGrid
-        columns={{ sm: 1, md: 2, lg: 4, xl: 6 }}
+        columns={{ sm: 1, md: 2, lg: 3, xl: 4 }}
         padding="10px"
         spacing={5}
       >
+        {isLoading &&
+          skeletons.map((skeleton) => (
+            <MovieCardContainer>
+              <MovieCardSkeleton key={skeleton} />
+            </MovieCardContainer>
+          ))}
         {movies.map((movie) => (
-          <MovieCard key={movie.id} movie={movie} />
+          <MovieCardContainer>
+            <MovieCard key={movie.id} movie={movie} />
+          </MovieCardContainer>
         ))}
       </SimpleGrid>
     </>

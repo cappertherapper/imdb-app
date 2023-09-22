@@ -17,9 +17,11 @@ export interface Movie {
 const useMovies = () => {
     const [movies, setMovies] = React.useState<Movie[]>([]);
     const [error, setError] = React.useState("");
+    const [isLoading, setLoading] = React.useState(false);
   
     useEffect(() => {
         const cancelTokenSource: CancelTokenSource = axios.CancelToken.source();
+        setLoading(true);
 
         axios
         .request<FetchMoviesResponse>({
@@ -28,12 +30,14 @@ const useMovies = () => {
           })
             .then(function (response) {
             setMovies(response.data.results);
+            setLoading(false);
             })
             .catch((err) => {
                 if (axios.isCancel(err)) {
                   return;
                 }
                 setError(err.message);
+                setLoading(false);
               });
                 
               return () => {
@@ -41,6 +45,6 @@ const useMovies = () => {
               };
     }, []);
 
-    return {movies, error};
+    return {movies, error,isLoading};
 }
 export default useMovies;
