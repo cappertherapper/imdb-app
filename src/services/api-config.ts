@@ -1,5 +1,5 @@
 
-const auth = import.meta.env.VITE_AUTH;
+const auth = import.meta.env.VITE_API_KEY;
 
 export const options = (appendStr: string) => ({
     method: "GET",
