@@ -1,9 +1,16 @@
 import useData from "./useData";
+import placeHolder from "../assets/icons8-categorize-50.png"
+
+export {placeHolder};
 
 export interface Genre {
     id: number;
     name: string;
 }
+
+
+
+const useGenres = () => useData<Genre>("/genre/movie/list?language=en","genres");
 
 export const genreIcons: Record<number,string> = {
     28: "src/assets/icons8-action-50.png", // Action
@@ -12,22 +19,19 @@ export const genreIcons: Record<number,string> = {
     35: "src/assets/icons8-comedy-50.png", // Comedy
     80: "src/assets/icons8-arrest-50.png", // Crime
     99: "src/assets/icons8-documentary-50.png", // Documentary
-    // 18: "/path-to-your-icons/drama-icon.svg", // Drama
-    // 10751: "/path-to-your-icons/family-icon.svg", // Family
-    // 14: "/path-to-your-icons/fantasy-icon.svg", // Fantasy
-    // 36: "/path-to-your-icons/history-icon.svg", // History
-    // 27: "/path-to-your-icons/horror-icon.svg", // Horror
-    // 10402: "/path-to-your-icons/music-icon.svg", // Music
-    // 9648: "/path-to-your-icons/mystery-icon.svg", // Mystery
-    // 10749: "/path-to-your-icons/romance-icon.svg", // Romance
-    // 878: "/path-to-your-icons/science-fiction-icon.svg", // Science Fiction
-    // 10770: "/path-to-your-icons/tv-movie-icon.svg", // TV Movie
-    // 53: "/path-to-your-icons/thriller-icon.svg", // Thriller
-    // 10752: "/path-to-your-icons/war-icon.svg", // War
-    // 37: "/path-to-your-icons/western-icon.svg", // Western
+    18: "src/assets/icons8-drama-50.png", // Drama
+    10751: "src/assets/icons8-family-50.png", // Family
+    14: "src/assets/icons8-fantasy-50.png", // Fantasy
+    36: "src/assets/icons8-history-50.png", // History
+    27: "src/assets/icons8-horror-50.png", // Horror
+    10402: "src/assets/icons8-musical-50.png", // Music
+    9648: "src/assets/icons8-mystery-64.png", // Mystery
+    10749: "src/assets/icons8-romance-50.png", // Romance
+    878: "src/assets/icons8-science-fiction-50.png", // Science Fiction
+    10770: "src/assets/icons8-tv-50.png", // TV Movie
+    53: "src/assets/icons8-thriller-50.png", // Thriller
+    10752: "src/assets/icons8-battle-50.png", // War
+    37: "src/assets/icons8-western-50.png", // Western
   };
   
-
-const useGenres = () => useData<Genre>("/genre/movie/list?language=en","genres");
-
 export default useGenres;
