@@ -16,7 +16,7 @@ interface Props {
 
 const GenreList = ({ onSelectGenre }: Props) => {
   const { data, error, isLoading } = useGenres();
-  const [selectedGenre, setSelectedGenre] = useState<Genre | null>(null);
+  // const [selectedGenre, setSelectedGenre] = useState<Genre | null>(null);
 
   if (error) return null;
   if (isLoading) return <Spinner />;
