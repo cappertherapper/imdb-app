@@ -12,9 +12,10 @@ import { useState } from "react";
 
 interface Props {
   onSelectGenre: (genre: Genre) => void;
+  selectedGenre: Genre | null;
 }
 
-const GenreList = ({ onSelectGenre }: Props) => {
+const GenreList = ({ onSelectGenre, selectedGenre }: Props) => {
   const { data, error, isLoading } = useGenres();
   // const [selectedGenre, setSelectedGenre] = useState<Genre | null>(null);
 
@@ -35,6 +36,7 @@ const GenreList = ({ onSelectGenre }: Props) => {
                 alt={genre.name}
               ></Image>
               <Button
+                fontWeight={selectedGenre?.id === genre.id ? "bold" : "normal"}
                 onClick={() => onSelectGenre(genre)}
                 variant="link"
                 fontSize="md"
