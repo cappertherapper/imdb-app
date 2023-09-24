@@ -5,8 +5,13 @@ import GenreList from "./components/GenreList";
 import { useState } from "react";
 import { Genre } from "./hooks/useGenres";
 
+export interface MovieQuery {
+  genre: Genre | null;
+}
+
 function App() {
-  const [selectedGenre, setSelectedGenre] = useState<Genre | null>(null);
+  const [movieQuery, setMovieQuery] = useState<MovieQuery>({} as MovieQuery);
+  // const [selectedGenre, setSelectedGenre] = useState<Genre | null>(null);
 
   return (
     <>
@@ -26,13 +31,13 @@ function App() {
         <Show above="lg">
           <GridItem area="aside" paddingX={5}>
             <GenreList
-              onSelectGenre={(genre) => setSelectedGenre(genre)}
-              selectedGenre={selectedGenre}
+              onSelectGenre={(genre) => setMovieQuery({ ...movieQuery, genre })}
+              selectedGenre={movieQuery.genre}
             />
           </GridItem>
         </Show>
         <GridItem area="main">
-          <MovieGrid selectedGenre={selectedGenre} />
+          <MovieGrid movieQuery={movieQuery} />
         </GridItem>
       </Grid>
     </>
