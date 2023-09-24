@@ -13,8 +13,8 @@ const useData = <T>(endpoint:string, responseKey:string) => {
     const [isLoading, setLoading] = useState(false);
   
     useEffect(() => {
-        const cancelTokenSource: CancelTokenSource = axios.CancelToken.source();
-        setLoading(true);
+      const cancelTokenSource: CancelTokenSource = axios.CancelToken.source();
+      setLoading(true);
 
         axios
         .request<FetchResponse<T>>({
@@ -33,9 +33,8 @@ const useData = <T>(endpoint:string, responseKey:string) => {
                 setLoading(false);
               });
                 
-              return () => {
-                cancelTokenSource.cancel();
-              };
+              return () => cancelTokenSource.cancel();
+
     }, []);
 
     return {data, error,isLoading};
