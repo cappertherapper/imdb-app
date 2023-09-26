@@ -20,7 +20,7 @@ const MovieGrid = ({ movieQuery }: Props) => {
       <SimpleGrid
         columns={{ sm: 2, md: 2, lg: 4, xl: 4 }}
         padding="10px"
-        spacing={3}
+        spacing={5}
       >
         {isLoading &&
           skeletons.map((skeleton) => (

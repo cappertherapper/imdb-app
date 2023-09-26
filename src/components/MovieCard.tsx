@@ -1,6 +1,6 @@
 import React from "react";
 import { Movie } from "../hooks/useMovies";
-import { Card, CardBody, Heading, Image } from "@chakra-ui/react";
+import { Card, CardBody, Flex, Heading, Image } from "@chakra-ui/react";
 import Rating from "./Rating";
 
 interface Prop {
@@ -16,9 +16,11 @@ const MovieCard = ({ movie }: Prop) => {
           src={"https://image.tmdb.org/t/p/w185" + movie.poster_path}
           objectFit="fill"
         />
-        <CardBody flex="1">
+        <CardBody>
+          <Flex direction="column" alignItems="flex-end">
+            <Rating rating={movie.vote_average} />
+          </Flex>
           <Heading fontSize="1xl">{movie.title}</Heading>
-          <Rating rating={movie.vote_average} />
         </CardBody>
       </Card>
     </>
