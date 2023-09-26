@@ -3,10 +3,14 @@
 A user-friendly IMDB-type movie browsing application, designed to provide quick access to movie information. This application is built with React Vite and leverages Chakra-UI for a responsive and accessible user interface. It allows users to search, filter, and sort movies, providing a seamless user experience.
 
 ## Table of Contents
-1. [Features](#features)
-2. [Demo](#demo)
+1. [Demo](#demo)
+2. [Features](#features)
 3. [Technologies](#technologies)
 4. [Setup](#setup)
+
+## Demo
+
+<img src="./demo.gif" alt="App Demo" width="500" height="250"/>
 
 ## Features
 
@@ -24,10 +28,6 @@ A user-friendly IMDB-type movie browsing application, designed to provide quick 
 
 - **Movie Grid**
   - Displays movies in a responsive grid, including a placeholder skeleton while data is loading.
-
-## Demo
-
-<img src="./demo.gif" alt="App Demo" width="500" height="250"/>
 
 ## Technologies
 
