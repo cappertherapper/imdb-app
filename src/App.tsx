@@ -1,14 +1,16 @@
-import { Flex, Grid, GridItem, HStack, Show } from "@chakra-ui/react";
+import { Box, Flex, Grid, GridItem, HStack, Show } from "@chakra-ui/react";
 import NavBar from "./components/NavBar";
 import MovieGrid from "./components/MovieGrid";
 import GenreList from "./components/GenreList";
 import { useState } from "react";
 import { Genre } from "./hooks/useGenres";
 import SortSelector from "./components/SortSelector";
+import MovieHeading from "./components/MovieHeading";
 
 export interface MovieQuery {
   genre: Genre | null;
   sortOption: string;
+  searchText: string;
 }
 
 function App() {
@@ -27,7 +29,11 @@ function App() {
         }}
       >
         <GridItem area="nav">
-          <NavBar />
+          <NavBar
+            onSearch={(search) => {
+              setMovieQuery({ ...movieQuery, searchText: search });
+            }}
+          />
         </GridItem>
         <Show above="lg">
           <GridItem area="aside" paddingX={5}>
@@ -38,13 +44,16 @@ function App() {
           </GridItem>
         </Show>
         <GridItem area="main">
-          <Flex paddingLeft={2} marginBottom={2}>
-            <SortSelector
-              onSelectSortOption={(sortOption) =>
-                setMovieQuery({ ...movieQuery, sortOption })
-              }
-            />
-          </Flex>
+          <Box paddingLeft={2}>
+            <MovieHeading gameQuery={movieQuery} />
+            <Flex marginBottom={2}>
+              <SortSelector
+                onSelectSortOption={(sortOption) =>
+                  setMovieQuery({ ...movieQuery, sortOption })
+                }
+              />
+            </Flex>
+          </Box>
           <MovieGrid movieQuery={movieQuery} />
         </GridItem>
       </Grid>
