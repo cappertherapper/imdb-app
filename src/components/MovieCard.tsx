@@ -12,7 +12,7 @@ const MovieCard = ({ movie }: Prop) => {
     <>
       <Card>
         <Image
-          height="278px"
+          height="200px"
           src={"https://image.tmdb.org/t/p/w185" + movie.poster_path}
           objectFit="fill"
         />

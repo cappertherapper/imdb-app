@@ -33,7 +33,7 @@ const GenreList = ({ onSelectGenre, selectedGenre }: Props) => {
             <HStack paddingY="5px">
               <Image
                 boxSize="24px"
-                background={"white"}
+                // background={"white"}
                 borderRadius={8}
                 src={genreIcons[genre.id] || placeHolder}
                 alt={genre.name}
