@@ -18,7 +18,7 @@ const MovieGrid = ({ movieQuery }: Props) => {
   return (
     <>
       <SimpleGrid
-        columns={{ sm: 1, md: 2, lg: 3, xl: 4 }}
+        columns={{ sm: 2, md: 2, lg: 4, xl: 4 }}
         padding="10px"
         spacing={3}
       >
